@@ -1,12 +1,30 @@
 public class Calificacion {
+    private int idCalificacion;
     private int idUsuario;
     private int puntuacion;
     private String resena;
 
-    public Calificacion(int idUsuario, int puntuacion, String resena) {
+    public Calificacion(int idCalificacion, int idUsuario, int puntuacion, String resena) {
+        this.idCalificacion = idCalificacion;
         this.idUsuario = idUsuario;
         this.puntuacion = puntuacion;
         this.resena = resena;
+    }
+
+    public int getIdCalificacion() {
+        return idCalificacion;
+    }
+
+    public void setIdCalificacion(int idCalificacion) {
+        this.idCalificacion = idCalificacion;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getResena() {
@@ -36,6 +54,7 @@ public class Calificacion {
     }
 
     public void mostrarInfo(){
+        System.out.println("Id Calificacion: " + idCalificacion);
         System.out.println("Cliente: " + idUsuario);
         System.out.println("Puntuaciòn es: " + puntuacion);
         System.out.println("Reseña: " + resena);
