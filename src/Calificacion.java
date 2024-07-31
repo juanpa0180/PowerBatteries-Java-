@@ -15,32 +15,16 @@ public class Calificacion {
         return idCalificacion;
     }
 
-    public void setIdCalificacion(int idCalificacion) {
-        this.idCalificacion = idCalificacion;
-    }
-
     public int getIdUsuario() {
         return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getResena() {
         return resena;
     }
 
-    public void setResena(String resena) {
-        this.resena = resena;
-    }
-
     public int getPuntuacion() {
         return puntuacion;
-    }
-
-    public void setPuntuacion(int puntuacion) {
-        this.puntuacion = puntuacion;
     }
 
     public int calificarServicio() {

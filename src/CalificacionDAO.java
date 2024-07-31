@@ -3,11 +3,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class CalificacionDAO {
-   public int insertarCalificacion(Calificacion calificacion/*, Connection connection*/) throws SQLException{
+   public int insertarCalificacion(Calificacion calificacion) throws SQLException{
       Connection con = Connector.connect();
-      //Crear la variable
+
       String sql = "INSERT INTO calificacion(id_calificacion, id_usuario, puntuacion, resena) VALUES (?, ?, ?, ?);";
-      //Crear la galeria de importación
+
       PreparedStatement statement = con.prepareStatement(sql);
       statement.setInt(1, calificacion.getIdCalificacion());
       statement.setInt(2, calificacion.getIdUsuario());

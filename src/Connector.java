@@ -5,24 +5,22 @@ import java.sql.SQLException;
 
 public class Connector {
         public static Connection connect() throws SQLException{
-            String url = "jdbc:mysql://localhost:3306/power_batteries_2";//Cambia dependiendo de la BD que usemos
+            String url = "jdbc:mysql://localhost:3306/power_batteries_2";
             String user = "root";
-            String password = "^2u%c^rG2!^o9G6"; //Cambia dependiendo de la BD que usemos
+            String password = "^2u%c^rG2!^o9G6";
 
             Connection connection = DriverManager.getConnection(url, user, password);
 
             System.out.println("Conexión exitosa a la BBDD");
-//            connection.close();
 
-            //Crear retorno
             return connection;
         }
 
-    public static void closePreparedStatement(PreparedStatement preparedStatement) throws SQLException {
-        preparedStatement.close();
-    }
+        public static void closePreparedStatement(PreparedStatement preparedStatement) throws SQLException {
+            preparedStatement.close();
+        }
 
-    public static void closeConnection(Connection connection) throws SQLException {
-        connection.close();
-    }
+        public static void closeConnection(Connection connection) throws SQLException {
+            connection.close();
+        }
 }

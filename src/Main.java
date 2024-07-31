@@ -14,13 +14,11 @@ public class Main {
         System.out.println("Por favor introduzca la puntuación");
         int puntuacion = scanner.nextInt(); scanner.nextLine();
         System.out.println("Por favor introduzca su reseña");
-        String resena = scanner.nextLine(); scanner.nextLine();
+        String resena = scanner.nextLine();
 
         Calificacion calificacion = new Calificacion(idResena, id, puntuacion, resena);
         int result = calificacionDao.insertarCalificacion(calificacion);
         calificacion.mostrarInfo();
         System.out.println("Result = " + result);
-
-//        Connector.connect();
     }
 }
