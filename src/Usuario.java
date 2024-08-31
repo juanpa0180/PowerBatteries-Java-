@@ -2,10 +2,27 @@ public class Usuario {
     private int idUsuario;
     private String nombre;
     private String apellido;
-    private int telefono;
+    private String telefono;
     private String correo;
+    private String direccion;
     private String contrasena;
     private String rol;
+
+    public Usuario(int idUsuario, String nombre, String apellido, String telefono, String direccion) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
     public String getNombre() {
         return nombre;
@@ -23,11 +40,11 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -37,6 +54,14 @@ public class Usuario {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getContrasena() {
@@ -68,5 +93,13 @@ public class Usuario {
     public String filtrarProductos() {
         String filtrarProductos = "Filtrar los Productos";
         return filtrarProductos;
+    }
+
+    public void mostrarDatosUsuario(){
+        System.out.println("Id Usuario: " + idUsuario);
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Apellido: " + apellido);
+        System.out.println("Telefono: " + telefono);
+        System.out.println("Direccion: " + direccion);
     }
 }

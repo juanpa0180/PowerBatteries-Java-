@@ -7,7 +7,7 @@ public class Connector {
         public static Connection connect() throws SQLException{
             String url = "jdbc:mysql://localhost:3306/power_batteries_2";
             String user = "root";
-            String password = "^2u%c^rG2!^o9G6";
+            String password = "Mj2Am7%2xA#%&5J";
 
             Connection connection = DriverManager.getConnection(url, user, password);
 
