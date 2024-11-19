@@ -11,8 +11,6 @@ public class Connector {
 
             Connection connection = DriverManager.getConnection(url, user, password);
 
-            System.out.println("Conexión exitosa a la BBDD");
-
             return connection;
         }
 
