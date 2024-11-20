@@ -1,19 +1,29 @@
 public class Baterias {
     private int idBateria;
-    private int tipoDeCaja;
+    private int tipoCaja;
     private int amperaje;
     private String marcaLinea;
-    private int garantiaEnMeses;
+    private String marcaVehiculo;
+    private String tipoCombustible;
     private int precio;
     //imagen
 
 
-    public int getTipoDeCaja() {
-        return tipoDeCaja;
+    public Baterias(int idBateria, int tipoCaja, int amperaje, String marcaLinea, String marcaVehiculo, String tipoCombustible, int precio) {
+        this.idBateria = idBateria;
+        this.amperaje = amperaje;
+        this.marcaLinea = marcaLinea;
+        this.marcaVehiculo = marcaVehiculo;
+        this.tipoCombustible = tipoCombustible;
+        this.precio = precio;
     }
 
-    public void setTipoDeCaja(int tipoDeCaja) {
-        this.tipoDeCaja = tipoDeCaja;
+    public int getTipoCaja() {
+        return tipoCaja;
+    }
+
+    public void setTipoCaja(int tipoCaja) {
+        this.tipoCaja = tipoCaja;
     }
 
     public int getAmperaje() {
@@ -32,14 +42,6 @@ public class Baterias {
         this.marcaLinea = marcaLinea;
     }
 
-    public int getGarantiaEnMeses() {
-        return garantiaEnMeses;
-    }
-
-    public void setGarantiaEnMeses(int garantiaEnMeses) {
-        this.garantiaEnMeses = garantiaEnMeses;
-    }
-
     public int getPrecio() {
         return precio;
     }
@@ -51,5 +53,39 @@ public class Baterias {
     public String visualizarFichaTecnica() {
         String caracteristicas = "Características de la Batería";
         return caracteristicas;
+    }
+
+    public int getIdBateria() {
+        return idBateria;
+    }
+
+    public void setIdBateria(int idBateria) {
+        this.idBateria = idBateria;
+    }
+
+    public String getMarcaVehiculo() {
+        return marcaVehiculo;
+    }
+
+    public void setMarcaVehiculo(String marcaVehiculo) {
+        this.marcaVehiculo = marcaVehiculo;
+    }
+
+    public String getTipoCombustible() {
+        return tipoCombustible;
+    }
+
+    public void setTipoCombustible(String tipoCombustible) {
+        this.tipoCombustible = tipoCombustible;
+    }
+
+    public void mostrarInfo(){
+        System.out.println("Id bateria: " + idBateria);
+        System.out.println("Tipo de caja: " + tipoCaja);
+        System.out.println("Amperaje: " + amperaje);
+        System.out.println("Marca Línea: " + marcaLinea);
+        System.out.println("Marca vehículo: " + marcaVehiculo);
+        System.out.println("Tipo de combustible: " + tipoCombustible);
+        System.out.println("Precio: " + precio);
     }
 }
