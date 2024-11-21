@@ -4,10 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BateriasDAO {
-    public Baterias mostrarbateria(int id) throws SQLException {
+    public Baterias mostrarBaterias(int id) throws SQLException {
         Connection con = Connector.connect();
-        Baterias bateria = null;
-        String sql = "SELECT caja, amperaje, linea, vehiculo, combustible, precio FROM bateria WHERE id_bateria = ?";
+        Baterias baterias = null;
+        String sql = "SELECT caja, amperaje, linea, vehiculo, combustible, precio FROM baterias WHERE id_bateria = ?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -24,15 +24,15 @@ public class BateriasDAO {
             String combustible = rs.getString("combustible");
             int precio = rs.getInt("precio");
 
-            bateria = new Baterias(idBateria, caja, amperaje, linea, vehiculo, combustible, precio);
+            baterias = new Baterias(idBateria, caja, amperaje, linea, vehiculo, combustible, precio);
         }
-        return bateria;
+        return baterias;
     }
 
-    public int insertarBateria(Baterias baterias) throws SQLException{
+    public int insertarBaterias(Baterias baterias) throws SQLException{
         Connection con = Connector.connect();
 
-        String sql = "INSERT INTO bateria(id_bateria, caja, amperaje, linea, vehiculo, combustible, precio) VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO baterias(id_bateria, caja, amperaje, linea, vehiculo, combustible, precio) VALUES (?, ?, ?, ?, ?, ?, ?);";
 
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, baterias.getIdBateria());
@@ -53,9 +53,9 @@ public class BateriasDAO {
         return result;
     }
 
-    public int actualizarbateria(Baterias baterias) throws SQLException{
+    public int actualizarBaterias(Baterias baterias) throws SQLException{
         Connection con = Connector.connect();
-        String sql = "UPDATE bateria SET caja = ?, amperaje = ?, linea = ?, vehiculo = ?, combustible = ?, precio = ? WHERE id_bateria = ?";
+        String sql = "UPDATE baterias SET caja = ?, amperaje = ?, linea = ?, vehiculo = ?, combustible = ?, precio = ? WHERE id_bateria = ?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -75,10 +75,10 @@ public class BateriasDAO {
         return result;
     }
 
-    public int eliminarBateria(Baterias baterias) throws SQLException{
+    public int eliminarBaterias(Baterias baterias) throws SQLException{
         Connection con = Connector.connect();
 
-        String sql = "DELETE FROM bateria WHERE id_bateria = ?";
+        String sql = "DELETE FROM baterias WHERE id_bateria = ?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 

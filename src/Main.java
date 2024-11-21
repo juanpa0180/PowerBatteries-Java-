@@ -11,6 +11,18 @@ public class Main {
         //generarCalificacion();
         //actualizarCalificacion();
         //eliminarCalificacion();
+        //mostrarBateria();
+        //generarBateria();
+        //actualizarBateria();
+        //eliminarBateria();
+        //mostrarPagos();
+        //generarPagos();
+        //actualizarPagos();
+        //eliminarPagos();
+        //mostrarVehiculos();
+        //generarVehiculos();
+        //actualizarVehiculos();
+        //eliminarVehiculos();
     }
 
     public static void mostrarUsuario() throws SQLException{
@@ -157,7 +169,7 @@ public class Main {
         System.out.println("Por favor introduzca el ID de su bateria");
         int idBateria = scanner.nextInt(); scanner.nextLine();
 
-        Baterias baterias = new BateriasDAO().mostrarbateria((idBateria));
+        Baterias baterias = new BateriasDAO().mostrarBaterias((idBateria));
         baterias.mostrarInfo();
     }
 
@@ -182,7 +194,7 @@ public class Main {
         int precio = scanner.nextInt(); scanner.nextLine();
 
         Baterias baterias = new Baterias(idBaterias, caja, amperaje, linea, vehiculo, combustible, precio);
-        int result = bateriasDao.insertarBateria(baterias);
+        int result = bateriasDao.insertarBaterias(baterias);
         baterias.mostrarInfo();
         System.out.println("Result = " + result);
     }
@@ -208,7 +220,7 @@ public class Main {
         int precio = scanner.nextInt(); scanner.nextLine();
 
         Baterias baterias = new Baterias(idBaterias, caja, amperaje, linea, vehiculo, combustible, precio);
-        bateriasDAO.actualizarbateria(baterias);
+        bateriasDAO.actualizarBaterias(baterias);
         baterias.mostrarInfo();
     }
 
@@ -220,9 +232,9 @@ public class Main {
         System.out.println("Por favor introduzca el ID de la bateria que se va a eliminar");
         int idBaterias = scanner.nextInt(); scanner.nextLine();
 
-        Baterias baterias = bateriasDAO.mostrarbateria(idBaterias);
+        Baterias baterias = bateriasDAO.mostrarBaterias(idBaterias);
 
-        int result = bateriasDAO.eliminarBateria(baterias);
+        int result = bateriasDAO.eliminarBaterias(baterias);
         if(result == 0) {
             System.out.println("Bateria eliminada exitosamente");
         } else {
@@ -230,5 +242,141 @@ public class Main {
         }
     }
 
+    public static void mostrarPagos() throws SQLException{
+        Scanner scanner = new Scanner(System.in);
+        PagosDAO pagosDAO = new PagosDAO();
+        System.out.println("Por favor introduzca el ID de su pago");
+        int idPagos = scanner.nextInt(); scanner.nextLine();
 
+        Pagos pagos = new PagosDAO().mostrarPagos((idPagos));
+        pagos.mostrarInfo();
+    }
+
+    public static void generarPagos() throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+
+        PagosDAO pagosDao = new PagosDAO();
+
+        System.out.println("Por favor introduzca el ID del pago");
+        int idPagos = scanner.nextInt(); scanner.nextLine();
+        System.out.println("Por favor introduzca el medio de pago usado");
+        String medioPago = scanner.nextLine();
+        System.out.println("Por favor introduzca los datos del pagador");
+        String datosPagador = scanner.nextLine();
+
+        Pagos pagos = new Pagos(idPagos, medioPago, datosPagador);
+        int result = pagosDao.insertarPagos(pagos);
+        pagos.mostrarInfo();
+        System.out.println("Result = " + result);
+    }
+
+    public static void actualizarPagos() throws SQLException{
+        Scanner scanner = new Scanner(System.in);
+
+        PagosDAO pagosDAO = new PagosDAO();
+
+        System.out.println("Por favor introduzca el ID del pago");
+        int idPagos = scanner.nextInt(); scanner.nextLine();
+        System.out.println("Por favor introduzca el medio de pago usado");
+        String medioPago = scanner.nextLine();
+        System.out.println("Por favor introduzca los datos del pagador");
+        String datosPagador = scanner.nextLine();
+
+        Pagos pagos = new Pagos(idPagos, medioPago, datosPagador);
+        pagosDAO.actualizarPagos(pagos);
+        pagos.mostrarInfo();
+    }
+
+    public static void eliminarPagos() throws SQLException{
+        Scanner scanner = new Scanner(System.in);
+
+        PagosDAO pagosDAO = new PagosDAO();
+
+        System.out.println("Por favor introduzca el ID de la pagos que se va a eliminar");
+        int idPagoss = scanner.nextInt(); scanner.nextLine();
+
+        Pagos pagos = pagosDAO.mostrarPagos(idPagoss);
+
+        int result = pagosDAO.eliminarPagos(pagos);
+        if(result == 0) {
+            System.out.println("Pago eliminado exitosamente");
+        } else {
+            System.out.println("Error!");
+        }
+    }
+
+    public static void mostrarVehiculos() throws SQLException{
+        Scanner scanner = new Scanner(System.in);
+        VehiculosDAO vehiculosDAO = new VehiculosDAO();
+        System.out.println("Por favor introduzca el ID de su vehículo");
+        int idVehiculos = scanner.nextInt(); scanner.nextLine();
+
+        Vehiculos vehiculos = new VehiculosDAO().mostrarVehiculo(idVehiculos);
+        vehiculos.mostrarInfo();
+    }
+
+    public static void generarVehiculos() throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+
+        VehiculosDAO vehiculosDao = new VehiculosDAO();
+
+        System.out.println("Por favor introduzca el ID del vehiculo");
+        int idVehiculos = scanner.nextInt(); scanner.nextLine();
+        System.out.println("Por favor introduzca la marca del vehículo");
+        String marca = scanner.nextLine();
+        System.out.println("Por favor introduzca el modelo del vehiculo");
+        int modelo = scanner.nextInt(); scanner.nextLine();
+        System.out.println("Por favor introduzca la version del vehiculo");
+        int version = scanner.nextInt(); scanner.nextLine();
+        System.out.println("Por favor introduzca el tipo de servicio del vehiculo");
+        String tipoServicio = scanner.nextLine();
+        System.out.println("Por favor introduzca el combustible del vehículo");
+        String tipoCombustible = scanner.nextLine();
+
+        Vehiculos vehiculos = new Vehiculos(idVehiculos, marca, modelo, version, tipoServicio, tipoCombustible);
+        int result = vehiculosDao.insertarVehiculo(vehiculos);
+        vehiculos.mostrarInfo();
+        System.out.println("Result = " + result);
+    }
+
+    public static void actualizarVehiculos() throws SQLException{
+        Scanner scanner = new Scanner(System.in);
+
+        VehiculosDAO vehiculosDAO = new VehiculosDAO();
+
+        System.out.println("Por favor introduzca el ID del vehiculo");
+        int idVehiculos = scanner.nextInt(); scanner.nextLine();
+        System.out.println("Por favor introduzca la marca del vehículo");
+        String marca = scanner.nextLine();
+        System.out.println("Por favor introduzca el modelo del vehiculo");
+        int modelo = scanner.nextInt(); scanner.nextLine();
+        System.out.println("Por favor introduzca la version del vehiculo");
+        int version = scanner.nextInt(); scanner.nextLine();
+        System.out.println("Por favor introduzca el tipo de servicio del vehiculo");
+        String tipoServicio = scanner.nextLine();
+        System.out.println("Por favor introduzca el combustible del vehículo");
+        String tipoCombustible = scanner.nextLine();
+
+        Vehiculos vehiculos = new Vehiculos(idVehiculos, marca, modelo, version, tipoServicio, tipoCombustible);
+        vehiculosDAO.actualizarVehiculo(vehiculos);
+        vehiculos.mostrarInfo();
+    }
+
+    public static void eliminarVehiculos() throws SQLException{
+        Scanner scanner = new Scanner(System.in);
+
+        VehiculosDAO vehiculosDAO = new VehiculosDAO();
+
+        System.out.println("Por favor introduzca el ID de la vehiculos que se va a eliminar");
+        int idVehiculos = scanner.nextInt(); scanner.nextLine();
+
+        Vehiculos vehiculos = vehiculosDAO.mostrarVehiculo(idVehiculos);
+
+        int result = vehiculosDAO.eliminarVehiculo(vehiculos);
+        if(result == 0) {
+            System.out.println("Vehiculo eliminado exitosamente");
+        } else {
+            System.out.println("Error!");
+        }
+    }
 }
