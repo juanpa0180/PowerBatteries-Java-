@@ -3,26 +3,61 @@ import java.util.Scanner;
 
 public class Main {
     public static void main (String[] args) throws SQLException {
-        //mostrarUsuario();
-        //generarUsuario();
-        //actualizarUsuario();
-        //eliminarUsuario();
-        //mostrarCalificacion();
-        //generarCalificacion();
-        //actualizarCalificacion();
-        //eliminarCalificacion();
-        //mostrarBateria();
-        //generarBateria();
-        //actualizarBateria();
-        //eliminarBateria();
-        //mostrarPagos();
-        //generarPagos();
-        //actualizarPagos();
-        //eliminarPagos();
-        //mostrarVehiculos();
-        //generarVehiculos();
-        //actualizarVehiculos();
-        //eliminarVehiculos();
+        Scanner scanner = new Scanner(System.in);
+        int cont = 1;
+        while (cont == 1) {
+            System.out.println("Por favor seleccione la tabla de la cual necesita información");
+            System.out.println("(1) Usuarios\n(2) Calificaciones\n(3) Baterías\n(4) Pagos\n(5) Vehículos");
+            int opcion = scanner.nextInt();
+            if (opcion == 1) {
+                System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) un usuario");
+                opcion = scanner.nextInt();
+                switch (opcion) {
+                    case 1 -> mostrarUsuario();
+                    case 2 -> generarUsuario();
+                    case 3 -> actualizarUsuario();
+                    case 4 -> eliminarUsuario();
+                }
+            } else if (opcion == 2) {
+                System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) una calificación");
+                opcion = scanner.nextInt();
+                switch (opcion) {
+                    case 1 -> mostrarCalificacion();
+                    case 2 -> generarCalificacion();
+                    case 3 -> actualizarCalificacion();
+                    case 4 -> eliminarCalificacion();
+                }
+            } else if (opcion == 3) {
+                System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) una batería");
+                opcion = scanner.nextInt();
+                switch (opcion) {
+                    case 1 -> mostrarBateria();
+                    case 2 -> generarBateria();
+                    case 3 -> actualizarBateria();
+                    case 4 -> eliminarBateria();
+                }
+            } else if (opcion == 4) {
+                System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) un pago");
+                opcion = scanner.nextInt();
+                switch (opcion) {
+                    case 1 -> mostrarPagos();
+                    case 2 -> generarPagos();
+                    case 3 -> actualizarPagos();
+                    case 4 -> eliminarPagos();
+                }
+            } else if (opcion == 5) {
+                System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) un vehículo");
+                opcion = scanner.nextInt();
+                switch (opcion) {
+                    case 1 -> mostrarVehiculos();
+                    case 2 -> generarVehiculos();
+                    case 3 -> actualizarVehiculos();
+                    case 4 -> eliminarVehiculos();
+                }
+            }
+            System.out.println("Desea continuar ejecutando el programa: sí(1) no(0)");
+            cont = scanner.nextInt();
+        }
     }
 
     public static void mostrarUsuario() throws SQLException{
@@ -89,7 +124,7 @@ public class Main {
         Usuario usuario = usuarioDao.mostrarUsuario(idUsuario);
 
         int result = usuarioDao.eliminarUsuario(usuario);
-        if(result == 0) {
+        if(result != 0) {
             System.out.println("Usuario eliminado exitosamente");
         } else {
             System.out.println("Error!");
@@ -156,7 +191,7 @@ public class Main {
         Calificacion calificacion = calificacionDAO.mostrarCalificacion(idCalificacion);
 
         int result = calificacionDAO.eliminarCalificacion(calificacion);
-        if(result == 0) {
+        if(result != 0) {
             System.out.println("Calificación eliminado exitosamente");
         } else {
             System.out.println("Error!");
@@ -235,7 +270,7 @@ public class Main {
         Baterias baterias = bateriasDAO.mostrarBaterias(idBaterias);
 
         int result = bateriasDAO.eliminarBaterias(baterias);
-        if(result == 0) {
+        if(result != 0) {
             System.out.println("Bateria eliminada exitosamente");
         } else {
             System.out.println("Error!");
@@ -298,7 +333,7 @@ public class Main {
         Pagos pagos = pagosDAO.mostrarPagos(idPagoss);
 
         int result = pagosDAO.eliminarPagos(pagos);
-        if(result == 0) {
+        if(result != 0) {
             System.out.println("Pago eliminado exitosamente");
         } else {
             System.out.println("Error!");
@@ -373,7 +408,7 @@ public class Main {
         Vehiculos vehiculos = vehiculosDAO.mostrarVehiculo(idVehiculos);
 
         int result = vehiculosDAO.eliminarVehiculo(vehiculos);
-        if(result == 0) {
+        if(result != 0) {
             System.out.println("Vehiculo eliminado exitosamente");
         } else {
             System.out.println("Error!");

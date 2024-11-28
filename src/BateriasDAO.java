@@ -7,7 +7,7 @@ public class BateriasDAO {
     public Baterias mostrarBaterias(int id) throws SQLException {
         Connection con = Connector.connect();
         Baterias baterias = null;
-        String sql = "SELECT caja, amperaje, linea, vehiculo, combustible, precio FROM baterias WHERE id_bateria = ?";
+        String sql = "SELECT id_bateria, caja, amperaje, linea, vehiculo, combustible, precio FROM baterias WHERE id_bateria = ?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -44,8 +44,6 @@ public class BateriasDAO {
         statement.setInt(7, baterias.getPrecio());
 
         System.out.println("Datos enviados a BBDD");
-
-        baterias.mostrarInfo();
 
         int result = statement.executeUpdate();
         Connector.closePreparedStatement(statement);

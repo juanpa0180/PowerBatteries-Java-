@@ -7,7 +7,7 @@ public class PagosDAO {
     public Pagos mostrarPagos(int id) throws SQLException {
         Connection con = Connector.connect();
         Pagos pagos = null;
-        String sql = "SELECT medio_de_pago, datos_pagador FROM pagos WHERE id_pagos = ?";
+        String sql = "SELECT id_pagos, medio_de_pago, datos_pagador FROM pagos WHERE id_pagos = ?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -37,8 +37,6 @@ public class PagosDAO {
 
         System.out.println("Datos enviados a BBDD");
 
-        pagos.mostrarInfo();
-
         int result = statement.executeUpdate();
         Connector.closePreparedStatement(statement);
         Connector.closeConnection(con);
@@ -47,7 +45,7 @@ public class PagosDAO {
 
     public int actualizarPagos(Pagos pagos) throws SQLException{
         Connection con = Connector.connect();
-        String sql = "UPDATE pagos SET medio_de_pago = ?, datos_pagador = ? WHERE id_bateria = ?";
+        String sql = "UPDATE pagos SET medio_de_pago = ?, datos_pagador = ? WHERE id_pagos = ?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -56,7 +54,6 @@ public class PagosDAO {
         ps.setInt(3, pagos.getIdPagos());
 
         int result = ps.executeUpdate();
-        pagos.mostrarInfo();
         Connector.closePreparedStatement(ps);
         Connector.closeConnection(con);
 
@@ -73,7 +70,6 @@ public class PagosDAO {
         ps.setInt(1, pagos.getIdPagos());
 
         int result = ps.executeUpdate();
-        System.out.println("Elemento con Id bateria: " + pagos.getIdPagos() + " ha sido eliminado.");
 
         Connector.closePreparedStatement(ps);
         Connector.closeConnection(con);

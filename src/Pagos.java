@@ -47,6 +47,6 @@ public class Pagos {
     public void mostrarInfo() {
         System.out.println("Id de pago: " + idPagos);
         System.out.println("Medios de pago: " + medioDePago);
-        System.out.println("Datos de pagador: " + medioDePago);
+        System.out.println("Datos de pagador: " + datosPagador);
     }
 }

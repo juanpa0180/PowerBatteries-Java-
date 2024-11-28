@@ -7,7 +7,7 @@ public class VehiculosDAO {
     public Vehiculos mostrarVehiculo(int id) throws SQLException {
         Connection con = Connector.connect();
         Vehiculos vehiculos = null;
-        String sql = "SELECT marca, modelo, version, tipo_servicio, tipo_combustible FROM vehiculos WHERE id_vehiculo = ?";
+        String sql = "SELECT id_vehiculo, marca, modelo, version, tipo_servicio, tipo_combustible FROM vehiculos WHERE id_vehiculo = ?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -43,8 +43,6 @@ public class VehiculosDAO {
 
         System.out.println("Datos enviados a BBDD");
 
-        vehiculos.mostrarInfo();
-
         int result = statement.executeUpdate();
         Connector.closePreparedStatement(statement);
         Connector.closeConnection(con);
@@ -65,7 +63,6 @@ public class VehiculosDAO {
         ps.setInt(6, vehiculos.getIdVehiculo());
 
         int result = ps.executeUpdate();
-        vehiculos.mostrarInfo();
         Connector.closePreparedStatement(ps);
         Connector.closeConnection(con);
 
@@ -75,14 +72,13 @@ public class VehiculosDAO {
     public int eliminarVehiculo(Vehiculos vehiculos) throws SQLException{
         Connection con = Connector.connect();
 
-        String sql = "DELETE FROM vehiculo WHERE id_vehiculo = ?";
+        String sql = "DELETE FROM vehiculos WHERE id_vehiculo = ?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
         ps.setInt(1, vehiculos.getIdVehiculo());
 
         int result = ps.executeUpdate();
-        System.out.println("Elemento con Id bateria: " + vehiculos.getIdVehiculo() + " ha sido eliminado.");
 
         Connector.closePreparedStatement(ps);
         Connector.closeConnection(con);

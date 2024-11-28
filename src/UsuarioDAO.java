@@ -24,9 +24,6 @@ public class UsuarioDAO {
 
          usuario = new Usuario(idUsuario, nombre, apellido, telefono, direccion);
       }
-
-
-
       return usuario;
    }
 
