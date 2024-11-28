@@ -5,13 +5,13 @@ public class Main {
     public static void main (String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int cont = 1;
-        while (cont == 1) {
+        while (cont != 0) {
             System.out.println("Por favor seleccione la tabla de la cual necesita información");
             System.out.println("(1) Usuarios\n(2) Calificaciones\n(3) Baterías\n(4) Pagos\n(5) Vehículos");
-            int opcion = scanner.nextInt();
+            int opcion = evaluarOpcion(evaluarInt(), 5, 1);
             if (opcion == 1) {
                 System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) un usuario");
-                opcion = scanner.nextInt();
+                opcion = evaluarOpcion(evaluarInt(), 4, 1);
                 switch (opcion) {
                     case 1 -> mostrarUsuario();
                     case 2 -> generarUsuario();
@@ -20,7 +20,7 @@ public class Main {
                 }
             } else if (opcion == 2) {
                 System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) una calificación");
-                opcion = scanner.nextInt();
+                opcion = evaluarOpcion(evaluarInt(), 4, 1);
                 switch (opcion) {
                     case 1 -> mostrarCalificacion();
                     case 2 -> generarCalificacion();
@@ -29,7 +29,7 @@ public class Main {
                 }
             } else if (opcion == 3) {
                 System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) una batería");
-                opcion = scanner.nextInt();
+                opcion = evaluarOpcion(evaluarInt(), 4, 1);
                 switch (opcion) {
                     case 1 -> mostrarBateria();
                     case 2 -> generarBateria();
@@ -38,7 +38,7 @@ public class Main {
                 }
             } else if (opcion == 4) {
                 System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) un pago");
-                opcion = scanner.nextInt();
+                opcion = evaluarOpcion(evaluarInt(), 4, 1);
                 switch (opcion) {
                     case 1 -> mostrarPagos();
                     case 2 -> generarPagos();
@@ -47,7 +47,7 @@ public class Main {
                 }
             } else if (opcion == 5) {
                 System.out.println("Por favor seleccione si desea ver(1), crear(2), modificar(3) o eliminar(4) un vehículo");
-                opcion = scanner.nextInt();
+                opcion = evaluarOpcion(evaluarInt(), 4, 1);
                 switch (opcion) {
                     case 1 -> mostrarVehiculos();
                     case 2 -> generarVehiculos();
@@ -55,8 +55,8 @@ public class Main {
                     case 4 -> eliminarVehiculos();
                 }
             }
-            System.out.println("Desea continuar ejecutando el programa: sí(1) no(0)");
-            cont = scanner.nextInt();
+            System.out.println("Desea continuar ejecutando el programa: sí(número entero) no(0)");
+            cont = evaluarInt();
         }
     }
 
@@ -413,5 +413,28 @@ public class Main {
         } else {
             System.out.println("Error!");
         }
+    }
+
+    public static int evaluarInt() {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                opcion = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Opción no disponible, intente de nuevo.");
+                scanner.nextLine();
+            }
+        }
+        return opcion;
+    }
+
+    public static int evaluarOpcion(int opcion, int max, int min) {
+        while(opcion > max || opcion < min) {
+            System.out.println("por favor elija una de las opciones dadas");
+            opcion = evaluarInt();
+        }
+        return opcion;
     }
 }
